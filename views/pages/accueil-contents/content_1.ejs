@@ -1,0 +1,64 @@
+<div id="section-main-contenu">
+    <section class="section-impair">
+        <div class="div-section-menu">
+            <h1 class="title-homepage-section">La carte</h1>
+            
+            <div class="container">
+                <div class="row">
+                    <% menu.forEach(function(menu) { %>
+                        <div class="col-md-4">
+                            <div class="<%= menu.image %> <%= menu.image %>-link"></div>
+                            <p class="subtitle-homepage-section"><%= menu.title %></p>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="bg-img-homepage2"></div>
+
+    <!-- Menu -->
+    <section class="section-impair">
+        <div class="div-section-menu">
+            <h1 class="title-homepage-section">Composer son menu</h1>
+            <div class="container">
+                <div class="row">
+
+                    <div class="container">
+                        <div class="row">
+                            <% extra_menu.forEach(function(extra_menu) { %>
+                                <div class="col-md-4">
+                                    <div class="<%= extra_menu.image %>-link"></div>
+                                    <p class="subtitle-homepage-section"><%= extra_menu.title %></p>
+                                    <p class="description-homepage-section"><%= extra_menu.description %></p>
+                                    <p class="description-homepage-section" style="font-weight: bold"><%= extra_menu.prix %>€</p>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application du site -->
+    <section class ="bg-light">         
+        <div class="div-section-menu">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="app"></div>
+                    </div>
+                    <div class="col-md-5 col-md-offset-1" style="margin: auto;">
+                        <p class="title-homepage-section">L'application arrive bientôt</p>
+                        <p class="subtitle-homepage-section">De la pizza quand vous voulez, où vous voulez !</p>
+                        <p class="description-homepage-section">Bientôt disponible sur Android et IOS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,150 @@
+<div id="section-main-contenu-carte">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sub-navbar-menu">
+        <div class="navbar-nav sub-navbar-menu" style="margin: auto;">
+            <a class="nav-item nav-link menu-entrees-link">Les entrées</a>
+            <a class="nav-item nav-link menu-pizzas-link">Les pizzas</a>
+            <a class="nav-item nav-link menu-boissons-link">Les boissons</a>
+        </div>
+    </nav>
+
+    <!-- Carte des entrees -->
+    <section class="section-impair" id='<%= menu[0].id %>'>
+        <div class="div-section-menu">
+            <h1 class="title-homepage-section">
+                <%= menu[0].title %>
+            </h1>
+            <div class="container">
+                <div class="row">
+                    <% for(const entree of entrees) { %>
+                        <div class="col-md-3 entree-<%= entree.id_entree %>">
+                            <p class="subtitle-homepage-section" id="nom-entree-<%= entree.id_entree %>">
+                                <%= entree.nom %>
+                            </p>
+                            <p class="description-homepage-section">
+                                <%= entree.description %>
+                            </p>
+                            <p class="description-homepage-section" style="font-weight:bold;">
+                                <%= entree.prix %>€
+                            </p>
+                            <% if(entree.deroulant==='oui' ) {%>
+                                <button class="btn btn-secondary choix-button">Choisir la sauce</button>
+                                <div class="choix-sauce">
+                                    <select class="form-select" id="select-entree-<%= entree.id_entree %>">
+                                        <option value="1" selected>Ketchup</option>
+                                        <option value="2">Mayonnaise</option>
+                                        <option value="3">Barbecue</option>
+                                        <option value="4">Curry</option>
+                                    </select>
+                                    <br>
+                                    <% if(c) { %>
+                                        <button class="btn modal-button btn-panier-entree-<%= entree.id_entree %>-sauce" style="width:100%;">Ajouter au panier</button>
+                                    <% } else { %>
+                                        <a href="/connexion"><button class="btn modal-button" style="width:100%;">Ajouter au panier</button></a>
+                                    <% } %>
+                                </div>
+                                <%} else {%>
+                                    <% if(c) { %>
+                                        <button class="btn modal-button btn-panier-entree-<%= entree.id_entree %>">Ajouter au panier</button>
+                                    <% } else { %>
+                                        <a href="/connexion"><button class="btn modal-button">Ajouter au panier</button></a>
+                                    <% } %>
+                                <%}%>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carte des pizzas -->
+    <section class="section-impair" id='<%= menu[1].id %>'>
+        <div class="div-section-menu">
+            <h1 class="title-homepage-section">
+                <%= menu[1].title %>
+            </h1>
+            <div class="container">
+                <div class="row">
+                    <% for(const pizza of pizzas) { %>
+                        <div class="col-md-3 pizza-<%= pizza.id_pizza %>">
+                            <p class="subtitle-homepage-section" id="nom-pizza-<%= pizza.id_pizza %>">
+                                <%= pizza.nom %>
+                            </p>
+                            <p class="description-homepage-section">
+                                <%= pizza.description %>
+                            </p>
+                            <p class="description-homepage-section" id="prix-pizza-<%= pizza.id_pizza %>"
+                                style="font-weight:bold;">
+                                <% if(pizza.id_pizza===7) {%>
+                                    À partir de 9€...
+                                <%} else {%>
+                                    <%= pizza.prix %>€
+                                <%}%>
+                            </p>
+                            <% if(pizza.id_pizza !==7) {%>
+                                <button class="btn btn-secondary choix-button">Choisir la taille</button>
+                                <div class="choix-taille">
+                                    <select class="form-select select-pizza-<%= pizza.id_pizza %>" id="select-pizza-<%= pizza.id_pizza %>">
+                                        <option value="1" selected>Small</option>
+                                        <option value="2">Medium</option>
+                                        <option value="3">Large</option>
+                                        <option value="4">XLarge</option>
+                                    </select>
+                                    <br>
+                                    <% if(c) { %>
+                                        <button class="btn modal-button btn-panier-pizza-<%= pizza.id_pizza %>" style="width:100%;">Ajouter au panier</button>
+                                    <% } else { %>
+                                        <a href="/connexion"><button class="btn modal-button" style="width:100%;">Ajouter au panier</button></a>
+                                    <% } %>
+                                    <br><p class="link-personnalisation-<%= pizza.id_pizza %> description-homepage-section">ou personnaliser...</p>
+                                </div>
+                                <%} else {%>
+                                    <button class="btn modal-button link-personnalisation">Personnaliser</button>
+                                <%}%>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carte des boissons -->
+    <section class="section-impair" id='<%= menu[2].id %>'>
+        <div class="div-section-menu">
+            <h1 class="title-homepage-section">
+                <%= menu[2].title %>
+            </h1>
+            <div class="container">
+                <div class="row">
+                    <% for(const boisson of boissons) { %>
+                        <div class="col-md-3 boisson-<%= boisson.id_boisson %>">
+                            <p class="subtitle-homepage-section" id="nom-boisson-<%= boisson.id_boisson %>">
+                                <%= boisson.nom %>
+                            </p>
+                            <p class="description-homepage-section">Peut être servie en 25cl, 33cl, 50cl ou 1l.</p>
+                            <p class="description-homepage-section" id="prix-boisson-<%= boisson.id_boisson %>"
+                                style="font-weight:bold;">
+                                <%= boisson.prix %>€
+                            </p>
+                            <button class="btn btn-secondary choix-button">Choisir la taille</button>
+                            <div class="choix-taille">
+                                <select class="form-select select-boisson-<%= boisson.id_boisson %>" id="select-boisson-<%= boisson.id_boisson %>">
+                                    <option value="1" selected>25cL</option>
+                                    <option value="2">33cL</option>
+                                    <option value="3">50cL</option>
+                                    <option value="4">1L</option>
+                                </select>
+                                <br>
+                                <% if(c) { %>
+                                    <button class="btn modal-button btn-panier-boisson-<%= boisson.id_boisson %>" style="width:100%;">Ajouter au panier</button>
+                                <% } else { %>
+                                    <a href="/connexion"><button class="btn modal-button" style="width:100%;">Ajouter au panier</button></a>
+                                <% } %>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

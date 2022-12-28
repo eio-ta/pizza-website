@@ -1,0 +1,199 @@
+<!-- Barre de navigation -->
+<%- include('../partials/head'); %>
+
+<!-- Contenu -->
+<main>
+    <% if(err) {%>
+        <div class="div-form" id="div-contains" style="padding-top: 150px;">
+            <h1 id="h1-connexion">Votre paiement a bien été validé.</h1>
+            <img src="../medias/images/livreur/livreur.png" style="margin-bottom:15%;">
+            <a href="/accueil"><button class="btn button">RETOUR VERS LE SITE MARCHAND</button></a>
+        </div>
+    <%} else {%>
+        <div class="container" id="div-contains">
+            <div class="row">
+                <!-- COLONNE DE DROITE -->
+                <div class="col-sm-8 pt-5">
+                    <div class="sidebar-box">
+                    <h1>Validation du panier</h1>
+                    </div>
+        
+                    <div class="separator"></div>
+        
+                    <!-- DEBUT : ADRESSE DE LIVRAISON -->
+                    <div class="sidebar-box">
+                        <h3>Adresse de livraison</h3>
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>Nom</td>
+                                    <td><%= profil[0].nom %></td>
+                                </tr>
+                                <tr>
+                                    <td>Prénom</td>
+                                    <td><%= profil[0].prenom %></td>
+                                </tr>
+                                <tr>
+                                    <td>Adresse</td>
+                                    <td><%= profil[0].adresse %></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="/profil"><button class="button profil-button">Modifier des données</button></a>
+                    </div>
+                    <!-- FIN : ADRESSE DE LIVRAISON -->
+        
+                    <div class="separator"></div>
+
+                    <!-- DEBUT : RESUME DU PANIER -->
+                    <div class="sidebar-box">
+                        <h3>Résumé du panier</h3>
+                        <table class="table table-striped">
+                            <tbody>
+                                <% var prix_t=0 %>
+                                <% for(const element of p) { %>
+                                    <% prix_t +=parseFloat(element.prix) %>
+                                    <%if(element.plat==="entree" ){%>
+                                        <tr>
+                                            <td style="font-weight: bold;"><%= entrees[element.id].nom %></td>
+                                            <td>
+                                                <p>Supplément :
+                                                    <%if(element.option==="1" ){%> Ketchup
+                                                    <%} else if(element.option==="2" ) {%> Mayonnaise
+                                                    <%} else if(element.option==="3" ) {%> Barbecue
+                                                    <%} else if(element.option==="4" ) {%> Curry
+                                                    <%} else {%>#<%}%>
+                                                </p>
+                                            </td>
+                                            <td><%= element.prix %>€</td>
+                                        </tr>
+                                    <%} else if(element.plat==="pizza" ){%>
+                                        <tr>
+                                            <td style="font-weight: bold;"><%= pizzas[element.id].nom %></td>
+                                            <td>
+                                                <p>Supplément :
+                                                    <%if(element.option==="1" ){%> Small
+                                                    <%} else if(element.option==="2" ) {%> Medium
+                                                    <%} else if(element.option==="3" ) {%> Large
+                                                    <%} else if(element.option==="4" ) {%> XLarge
+                                                    <%} else {%>#<%}%>
+                                                </p>
+                                            </td>
+                                            <td><%= element.prix %>€</td>
+                                        </tr>
+                                    <%} else if(element.plat==="boisson" ){%>
+                                        <tr>
+                                            <td style="font-weight: bold;"><%= boissons[element.id].nom %></td>
+                                            <td>
+                                                <p>Supplément :
+                                                    <%if(element.option==="1" ){%> 25cL
+                                                    <%} else if(element.option==="2" ) {%> 33cL
+                                                    <%} else if(element.option==="3" ) {%> 50 cL
+                                                    <%} else if(element.option==="4" ) {%> 1L
+                                                    <%} else {%>#<%}%>
+                                                </p>
+                                            </td>
+                                            <td><%= element.prix %>€</td>
+                                        </tr>
+                                    <%} else if(element.plat==="menu"){%>
+                                        <tr>
+                                            <td style="font-weight: bold;">Menu</td>
+                                            <td>
+                                                <p>Supplément :
+                                                    <%if(element.id ==="1") {%> 1 entrée, 1 pizza Médium, 1 boissons de 33cL
+                                                    <%} else if(element.id ==="2") {%> 1 entrée, 2 pizzas Médium, 1 boisson d’1l
+                                                    <%} else {%> 2 entrées, 2 pizzas Large, 2 boisson d’1l
+                                                    <%}%>
+                                                </p>
+                                            </td>
+                                            <td><%= element.prix %>€</td>
+                                        </tr>
+                                    <%} else {%>
+                                        <tr>
+                                            <td style="font-weight: bold;">Pizza Composable</td>
+                                            <td>
+                                                <p>Supplément :
+                                                    <% for(const i of element.option) { %>
+                                                        <%if(i[0]==="0" ){%> Sauce Tomate (<%=i[1]%>),
+                                                        <%} else if(i[0]==="1"){%> Mozarella (<%=i[1]%>),
+                                                        <%} else if(i[0]==="2"){%> Jambon (<%=i[1]%>),
+                                                        <%} else if(i[0]==="3"){%> Pepperoni (<%=i[1]%>),
+                                                        <%} else if(i[0]==="4"){%> Merguez (<%=i[1]%>),
+                                                        <%} else if(i[0]==="5"){%> Fromage râpée (<%=i[1]%>),
+                                                        <%} else if(i[0]==="6"){%> Champignons (<%=i[1]%>),
+                                                        <%} else if(i[0]==="7"){%> Poivrons (<%=i[1]%>),
+                                                        <%} else if(i[0]==="8"){%> Olives (<%=i[1]%>),
+                                                        <%} else if(i[0]==="9"){%> Tomates (<%=i[1]%>),
+                                                        <%} else if(i[0]==="10"){%> Boulettes de Boeuf (<%=i[1]%>),
+                                                        <%} else if(i[0]==="11"){%> Oignons (<%=i[1]%>),
+                                                        <%} else if(i[0]==="12"){%> Small,
+                                                        <%} else if(i[0]==="13"){%> Medium,
+                                                        <%} else if(i[0]==="14"){%> Large,
+                                                        <%} else if(i[0]==="15") {%> XLarge,
+                                                        <%}%>
+                                                    <%}%>
+                                                </p>
+                                            </td>
+                                            <td><%= element.prix %>€</td>
+                                        </tr>
+                                    <%}%>
+                                <%}%>
+                                <tr>
+                                    <td style="font-weight: bold;">Prix total</td>
+                                    <td></td>
+                                    <td><%= prix_t %>€</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 100px;"></div>
+                </div>
+                <!-- FIN : RESUME DE LA COMMANDE -->
+
+                <div class="col-sm-4 sidebar pt-5 bg-light">
+
+                    <div class="sidebar-box">
+                        <h3>Formulaire de paiement</h3>
+                        <form action="/paiement" method="post">
+                            <ul class="coordonnees">
+                                <li><label>Heure de la livraison</label>
+                                <input type="time" class="form-control" name="time" required></li>
+                                <li><label>Numéro de la carte</label>
+                                <input type="text" class="form-control" placeholder="1035-0007-1024-8298" pattern="\d*" minlength="16" maxlength="16" required></li>
+                                <li><label> Expire le</label>
+                                <select class="form-control" style="text-align: left;">
+                                    <option selected>Janvier</option>
+                                    <option>Février</option>
+                                    <option>Mars</option>
+                                    <option>Avril</option>
+                                    <option>Mai</option>
+                                    <option>Juin</option>
+                                    <option>Juillet</option>
+                                    <option>Août</option>
+                                    <option>Septembre</option>
+                                    <option>Octobre</option>
+                                    <option>Novembre</option>
+                                    <option>Décembre</option>
+                                </select>
+                                <input type="number" class="form-control" placeholder="2024" min="2022" max="2026" required></li>
+                                <li><label>CVV</label>
+                                <input type="text" class="form-control" placeholder="546" name="cvv" pattern="\d*" minlength="3" maxlength="3" required></li>
+                            </ul>
+                                <button type="submit" class="btn modal-button" value="accept" style="width: 100%">Valider votre paiement</button>
+                        </form>
+                    </div>
+                    <div class="sidebar-box">
+                        <h3>Moyens de paiement acceptés</h3>
+                        <ul class="coordonnees">
+                            <li><img src="../medias/images/paiement.png" alt=""></li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 100px;"></div>
+                </div>
+            </div>
+        </div>
+    <%}%>
+</main>
+
+<!-- Barre de fin -->
+<%- include('../partials/footer'); %>

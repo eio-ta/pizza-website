@@ -1,0 +1,80 @@
+<!-- Contenu de la page de personnalisation de la pizza -->
+<div id="section-main-contenu-personnalisation">
+    <div class="bg-img-homepage2" id="personnalisation"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sub-navbar-menu">
+        <div class="navbar-nav sub-navbar-menu" style="margin: auto;">
+            <a class="nav-item nav-link menu-entrees-link">Les entrées</a>
+            <a class="nav-item nav-link menu-pizzas-link">Les pizzas</a>
+            <a class="nav-item nav-link menu-boissons-link">Les boissons</a>
+        </div>
+    </nav>
+
+    <section class="section-impair">
+        <div class="div-section-menu">
+            <h1 class="title-homepage-section">Première étape</h1>
+            <div class="separator"></div>
+            <div class="container">
+                <p class="description-homepage-section-title" id="prix-ingredient-taille">Choisir la taille de la pizza.</p>
+                <select class="form-select select-taille-ingredient" id="select-taille-ingredient">
+                    <option value="1">Small</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Large</option>
+                    <option value="4">XLarge</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pair section-pair-ingredient" style="display:none">
+        <div class="div-section-menu">
+            <h1 class="title-homepage-section">Deuxième étape</h1>
+            <div class="separator"></div>
+            <div class="container">
+                <p class="description-homepage-section-title" id="prix-ingredient-quantite">Choisir les ingrédients. Jusqu'à 6 ingrédients maximum.
+                </p>
+                <div class="container">
+                    <div class="row">
+                    <% for(const ingredient of ingredients) { %>
+                        <div class="col-md-3 ingredient-<%= ingredient.id_ingredient %>">
+                            <p class="subtitle-homepage-section">
+                                <%= ingredient.nom %>
+                            </p>
+                            <p class="description-homepage-section" id="prix-ingredient-<%= ingredient.id_ingredient %>" style="font-weight:bold;">
+                                <%= ingredient.prix %>€
+                            </p>
+                            <button class="btn btn-secondary choix-button %>">Choisir la quantité</button>
+                            <div class="choix-taille choix-taille-<%= ingredient.id_ingredient %>">
+                                <select class="form-select" id="select-ingredient-<%= ingredient.id_ingredient %>">
+                                    <option value="0" selected>None</option>
+                                    <option value="1">Simple</option>
+                                    <option value="2">Double</option>
+                                    <option value="3">Triple</option>
+                                </select>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-impair section-impair-ingredient" style="display:none">
+        <div class="div-section-menu">
+            <h1 class="title-homepage-section">Troisième étape</h1>
+            <div class="separator"></div>
+            <div class="container">
+                <p class="description-homepage-section-title">Valider votre choix !</p>
+                <% if(c) { %>
+                    <button class="btn modal-button" id="prix-ingredient-final" disabled>Ajouter au panier</button>
+                <% } else { %>
+                    <a href="/connexion"><button class="btn modal-button" id="prix-ingredient-final" disabled>Ajouter au panier</button></a>
+                <% } %>
+                <div style="height: 10px;"></div>
+                <div class="alert alert-warning" role="alert">
+                    Attention : vous pouvez choisir entre 3 et 6 ingrédients !
+                </div>
+                <div style="height: 10px;"></div>
+            </div>
+        </div>
+    </section>
+</div>

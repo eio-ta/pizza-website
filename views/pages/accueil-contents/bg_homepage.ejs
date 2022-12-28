@@ -1,0 +1,15 @@
+<div class="bg-img-homepage">
+    <h1 class="title-homepage text-md-left">
+        <%if(l) {%>
+            Révolutionnons l'avenir de la livraison ensemble !</h1>
+        <%} else {%>
+            Vos pizzas préférées, directement livrés chez vous en un clic</h1>
+            <div class="bg-div-homepage">
+                <% if(c) {%>
+                    <p class="txt-homepage">Commandez et recevez votre commande le plus rapidement possible !</p>
+                <%} else {%>
+                    <p class="txt-homepage">Vous êtes un... <a href="\connexion"><button class="button">client</button></a><a href="\livraison"><button class="button">livreur</button></a> Alors connectez-vous !</p>
+                <%}%>
+            </div>
+        <%}%>
+</div>

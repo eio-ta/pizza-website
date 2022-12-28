@@ -1,0 +1,142 @@
+<!-- Barre de navigation -->
+<%- include('../partials/head'); %>
+
+  <main>
+    <div class="container div-contains-accueil-connected" id="div-contains">
+      <div class="row">
+
+        <!-- COLONNE DE GAUCHE -->
+        <div class="col-sm-4 sidebar bg-light pt-5">
+          <div class="sidebar-box">
+            <h3>Mon Profil</h3>
+            <ul class="coordonnees">
+              <li>Mes coordonnées</li>
+              <li>Mes adresses</li>
+              <li>Sécurité du compte</li>
+            </ul>
+          </div>
+          <div class="sidebar-box">
+            <h3>Options</h3>
+            <ul class="coordonnees">
+              <li><a href="/deconnexion">Me déconnecter</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- COLONNE DE DROITE -->
+        <div class="col-sm-8 pt-5">
+          <div class="sidebar-box">
+            <h1>Bonjour,</h1>
+          </div>
+
+          <div class="separator"></div>
+
+          <!-- DEBUT : DONNEES ENREGISTREES -->
+          <div class="sidebar-box">
+            <h3>Données enregistrées</h3>
+            <table class="table table-striped">
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Nom</td>
+                  <td><%= profil[0].nom %></td>
+                </tr>
+                <tr>
+                  <td>Prénom</td>
+                  <td><%= profil[0].prenom %></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button class="button profil-button" id="button1-modal" data-toggle="modal" data-target="#modal">Modifier
+              des données</button>
+          </div>
+          <!-- FIN : DONNEES ENREGISTREES -->
+
+          <div class="separator"></div>
+
+          <!-- DEBUT : ADRESSES ENREGISTREES -->
+          <div class="sidebar-box">
+            <h3>Adresses enregistrées</h3>
+            <table class="table table-striped">
+
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Adresse</td>
+                  <td><%= profil[0].adresse %></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <button class="button profil-button" id="button2-modal" data-toggle="modal" data-target="#modal">Modifier
+              l'adresse</button>
+          </div>
+          <!-- FIN : ADRESSES ENREGISTREES -->
+
+          <div class="separator"></div>
+
+          <!-- DEBUT : SECURITE DU COMPTE -->
+          <div class="sidebar-box">
+            <h3>Sécurité du compte</h3>
+            <table class="table table-striped">
+
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Adresse mail</td>
+                  <td><%= profil[0].mail %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- FIN : SECURITE DU COMPTE -->
+
+          <div style="margin-top: 100px;"></div>
+
+
+          <!-- DEBUT : MODAL POUR CHANGER LES DONNEES -->
+          <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modal">Modification des données</h5>
+                </div>
+
+                <div class="modal-body">
+                  <form method="POST" id="form-modal">
+
+                    <div class="form-group" id="form-modal-nom">
+                      <label class="label-form" for="nom">Nom</label>
+                      <input type="text" class="form-control" name="nom" value="<%= profil[0].nom %>">
+                    </div>
+
+                    <div class="form-group" id="form-modal-prenom">
+                      <label class="label-form" for="prenom">Prénom</label>
+                      <input type="text" class="form-control" name="prenom" value="<%= profil[0].prenom %>">
+                    </div>
+
+                    <div class="form-group" id="form-modal-adresse">
+                      <label class="label-form" for="adresse">Adresse</label>
+                      <input type="text" class="form-control" name="adresse" value="<%= profil[0].adresse %>">
+                    </div>
+
+                    <div class="modal-footer">
+                      <button class="btn" data-dismiss="modal">Annuler</button>
+                      <button type="submit" class="btn modal-button" value="submit">Modifier</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- FIN : MODAL POUR CHANGER LES DONNEES -->
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- Barre de fin -->
+  <%- include('../partials/footer'); %>

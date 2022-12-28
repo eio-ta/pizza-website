@@ -1,0 +1,116 @@
+<!-- Barre de navigation -->
+<%- include('../partials/head'); %>
+
+<main>
+    <%- include('accueil-contents/bg_homepage.ejs'); %>
+
+    <div id="section-main-contenu">
+        <section class="section-impair">
+            <div class="div-section-menu">
+                <h1 class="title-homepage-section">Prochaine commande</h1>
+                <div class="container">
+                    <div class="row">
+
+                        <% if(commandes.length === 0) { %>
+                            <h3> Il n'y a pas de commande à livrer.</h3>
+                        <%} else { %>
+
+                        <div class="col-md-4">
+                            <!-- INFOS CLIENT PRIO -->
+                            <img class="img-client" src="/medias/images/livreur/client1.png">
+                            <div class="card-header">
+                                <h4 class="txt-homepage"><%= clients[commandes[0].id_client].nom %> <%= clients[commandes[0].id_client].prenom %></h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="description-homepage-section"><%= clients[commandes[0].id_client].adresse %></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-7 col-md-offset-1">
+                            <!-- DETAIL DE LA COMMANDE -->
+                            <div class="card-header">
+                                <h4 class="txt-homepage">Détails</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="description-homepage-section">Heure de la livraison : <%= commandes[0].heure_de_livraison %></p>
+                                <p class="description-homepage-section" style="font-weight:bold;">Articles achetés :</p>
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <% for(const element of commandes_details) { %>
+                                            <% if(element.id_commande === commandes[0].id_commande) {%>
+                                                <tr>
+                                                    <td><%=element.nom_article%></td>
+                                                    <td><%=element.supplement%></td>
+                                                    <td><%=element.prix%></td>
+                                                </tr>
+                                            <%}%>
+                                        <%}%>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td style="font-weight: bold;"><%= commandes[0].prix_total%></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button class="btn modal-button" id="btn-livraison-eff">Livraison effectuée</button>
+                            </div>
+
+                        </div>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section-pair">
+            <div class="div-section-menu">
+                <h1 class="title-homepage-section">Livraison en attente</h1>
+                <div class="container">
+                    <div class="row">
+
+                        <% if(commandes.length === 1) { %>
+                            <h3> Il n'y a pas de commande à livrer.</h3>
+                        <%} else { %>
+                            <% for(let i = 1; i < commandes.length; i++) { %>
+                                <div class="col-md-3">
+                                    <div class="card-header">
+                                        <h4 class="txt-homepage"><%= clients[commandes[i].id_client].nom %> <%= clients[commandes[i].id_client].prenom %></h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="description-homepage-section"><%= clients[commandes[i].id_client].adresse %></p>
+                                        <p class="description-homepage-section">Heure de la livraison : <%=commandes[i].heure_de_livraison%></p>
+                                        <p class="description-homepage-section" style="font-weight:bold;">Articles achetés :</p>
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <% for(const element of commandes_details) { %>
+                                                    <% if(element.id_commande === commandes[i].id_commande) {%>
+                                                        <tr>
+                                                            <td><%=element.nom_article%></td>
+                                                            <td><%=element.supplement%></td>
+                                                            <td><%=element.prix%></td>
+                                                        </tr>
+                                                    <%}%>
+                                                <%}%>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td style="font-weight: bold;"><%=commandes[i].prix_total%></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            <%}%>
+                        <%}%>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Barre de fin -->
+<%- include('../partials/footer'); %>

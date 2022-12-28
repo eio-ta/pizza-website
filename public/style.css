@@ -1,0 +1,363 @@
+@font-face {
+    font-family: "plex-sans";
+    src: url("../medias/font/IBMPlexSans.ttf") format("ttf");
+}
+
+html {
+    height: 100%;
+}
+
+nav .navbar-nav {
+    display: flex;
+    list-style: none;
+    width: 400px;
+    margin-left: 60px;
+    justify-content: space-between;
+}
+
+body {
+    font-family: "plex-sans", sans-serif;
+    text-align: left;
+    min-width: 500px;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/*  SECTIONS & DIV  ****************************************************************************************************/
+
+.footer-div {
+    background-color: #2e3333;
+    color: #fff;
+}
+
+#div-contains {
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+.div-section-menu {
+    margin: 0 15%;
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.title-homepage-section {
+    font-size: 35px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: .2rem;
+}
+
+.subtitle-homepage-section {
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-top: 5%;
+}
+
+section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.section-pair {
+    background-color: #fcf7f3;
+}
+
+
+/*  FORMULAIRES ET BOUTONS  ********************************************************************************************/
+
+.div-form {
+    max-width: 400px;
+}
+
+.button {
+    background: #fff;
+    padding: 8px 16px;
+    border: 1px solid #e8ebeb;
+}
+
+.profil-button {
+    margin: auto;
+}
+
+.modal-button {
+    background-color: #ae350e;
+    color: white;
+}
+
+.modal-button:hover {
+    color: white;
+}
+
+.button-submit {
+    width: 100%;
+    color: #fff;
+    background: #ae350e;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.choix-button {
+    width: 60%;
+}
+
+select {
+    text-align: center;
+}
+
+
+/*  TITRES, LIENS ET LISTES  *******************************************************************************************/
+
+h1,
+h3 {
+    line-height: 28px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #2e3333;
+}
+
+h1 {
+    font-size: 22px;
+}
+
+h3,
+h4 {
+    font-size: 18px;
+}
+
+h4 {
+    margin: auto;
+}
+
+td {
+    font-size: 15px;
+}
+
+.coordonnees {
+    padding-left: 0;
+}
+
+.coordonnees li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
+    list-style: none;
+}
+
+.separator {
+    border-bottom: 1px solid #dee2e6;
+    width: 50%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+a,
+a:hover {
+    color: #212529;
+    text-decoration: none;
+}
+
+.title-homepage {
+    font-size: 32px;
+    line-height: 110%;
+    color: #ae350e;
+    text-align: center;
+}
+
+.txt-homepage {
+    font-weight: bold;
+}
+
+.txt-1 {
+    text-align: center;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.description-homepage-section {
+    text-align: center;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.description-homepage-section-title {
+    margin: 30px 0;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#description-panier {
+    font-size: 15px;
+    line-height: 17px;
+    margin-bottom: -10%;
+    width: 170px;
+}
+
+.choix-sauce,
+.choix-taille {
+    list-style: none;
+    width: 60%;
+    margin: auto;
+}
+
+
+/*  MODALS ET BARS  ****************************************************************************************************/
+
+.modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 400px;
+    height: 90%;
+}
+
+.modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal.right .modal-body {
+    padding: 15px 15px 80px;
+}
+
+.modal.right.fade .modal-dialog {
+    right: 0;
+}
+
+.sidebar-box {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 3%;
+    margin-bottom: 30px;
+}
+
+.sub-navbar-menu {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: auto;
+}
+
+.col-md-3 {
+    margin-bottom: 30px;
+}
+
+.col-md-6 {
+    margin: auto;
+}
+
+.flex-container {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    margin: 10% 0%;
+    margin-left: 5%;
+}
+
+
+/*  IMAGES  ************************************************************************************************************/
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.bg-img-homepage,
+.bg-img-homepage2 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-img-homepage {
+    background-image: url("/medias/images/background.png");
+    height: 40%;
+    padding: 6% 15% 6% 15%;
+    margin-top: 60px;
+}
+
+.bg-img-homepage2 {
+    background-image: url("/medias/images/background2.png");
+    background-size: auto 100%;
+    height: 500px;
+}
+
+.menu-entrees,
+.menu-pizzas,
+.menu-boissons {
+    width: 100%;
+    height: 400px;
+    max-width: 400px;
+}
+
+.menu-EM-link,
+.menu-MM-link,
+.menu-GM-link {
+    width: 100%;
+    height: 210px;
+    max-width: 300px;
+    margin: auto;
+}
+
+.menu-entrees {
+    background-image: url("/medias/images/menu-entrees.png");
+}
+
+.menu-pizzas {
+    background-image: url("/medias/images/menu-pizzas.png");
+}
+
+.menu-boissons {
+    background-image: url("/medias/images/menu-boissons.png");
+}
+
+.menu-EM-link {
+    background-image: url("/medias/images/menu-EM.png");
+}
+
+.menu-MM-link {
+    background-image: url("/medias/images/menu-MM.png");
+}
+
+.menu-GM-link {
+    background-image: url("/medias/images/menu-GM.png");
+}
+
+.app {
+    background-image: url("/medias/images/apppizzas.png");
+    background-size: 100% 100%;
+    height: 600px;
+}
+
+.img-interdit {
+    background-image: url("/medias/images/interdit.png");
+    height: 450px;
+    width: 450px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+
+/*  CHAMPS QUI CHANGENT EN FONCTION DE LA TAILLE DE L'ECRAN  ***********************************************************/
+
+@media screen and (max-width: 1110px) {
+    .subtitle-homepage-section {
+        font-size: 20px;
+    }
+    .app {
+        height: 300px;
+    }
+    .bg-img-homepage2 {
+        height: 300px;
+    }
+    .img-client {
+        width: 200px;
+    }
+}
